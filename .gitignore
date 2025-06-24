@@ -32,4 +32,5 @@ Thumbs.db
 # מודול תלויות (אם רוצים לבנות מחדש עם go mod tidy)
 # אבל לרוב משאירים אותו בגיט
 # /vendor/
+
 credentials.json
