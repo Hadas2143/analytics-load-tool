@@ -11,6 +11,12 @@ import (
 )
 
 func main() {
+	
+	
+	errGlobalConsul := configuration.InitGlobalConsul()
+	if errGlobalConsul != nil {
+		panic(errGlobalConsul)
+	}
 	if len(os.Args) < 2 {
 		log.Fatal("Pass a path to the log file as a parameter")
 	}
@@ -57,9 +63,4 @@ func main() {
 		}
 	}
 
-	}
-	err := configuration.InitGlobalConsul()
-	if err != nil {
-		panic(err)
-	}
 }
