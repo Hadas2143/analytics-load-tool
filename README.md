@@ -6,8 +6,7 @@ A high-performance, production-grade traffic simulation infrastructure designed 
 This tool automates the process of reading massive amounts of historical raw logs, storing them efficiently, parsing data structures into normalized entities, and executing controlled traffic simulation workloads onto production-like cloud databases.
 
 ## 🏗️ System Architecture & Workflow
-
-<!-- גררי לפה את תמונת הארכיטקטורה הכחולה עם הריבועים הלבנים -->
+<img width="462" height="467" alt="{64A2DB0B-214E-4CF1-9A81-C9A3F8B65982}" src="https://github.com/user-attachments/assets/93573423-3aee-4683-9570-e1e3b6318e94" />
 
 
 1.  **Logs Source:** Ingests raw query data files (CSV, JSON, LOG).
@@ -19,10 +18,9 @@ This tool automates the process of reading massive amounts of historical raw log
 7.  **Consul Integration:** Manages active system configurations and process checkpoint states.
 
 ## 📈 Observability & Monitoring
+<img width="1065" height="140" alt="{606440AC-7BB2-40E0-AB58-5987ABFA8911}" src="https://github.com/user-attachments/assets/b73f73d9-36c2-44f8-9b77-8ae1ee834344" />
 
 The system includes built-in metric collection pipelines connected directly to **Datadog** for full end-to-end operational visibility.
-
-<!-- גררי לפה את תמונת הגרפים הלבנה של הדאשבורד -->
 
 
 Metrics monitored include:
