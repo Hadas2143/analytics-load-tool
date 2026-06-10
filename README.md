@@ -1,61 +1,37 @@
-Analytics Load Tool
-Analytics Load Tool is a Go-based system designed to replay historical traffic from log files into modern analytics pipelines.
-It is primarily used for simulation, load testing, and data backfill operations.
+# Analytics Load Simulation Tool 📊
 
-The tool processes events from stored logs, sends them through MongoDB, and finally writes them into Google BigQuery.
-It works locally or in cloud environments such as Kubernetes, with full observability through Datadog.
+A high-performance, production-grade traffic simulation infrastructure designed to replicate historical data load patterns with **93% precision** from production environments for active backend testing.
 
-Main Features
-Historical Log Replay – Process large log datasets and simulate original traffic patterns
+## 🎯 Project Overview
+This tool automates the process of reading massive amounts of historical raw logs, storing them efficiently, parsing data structures into normalized entities, and executing controlled traffic simulation workloads onto production-like cloud databases.
 
-MongoDB Integration – Insert events into one or more MongoDB instances with configurable write guarantees
+## 🏗️ System Architecture & Workflow
 
-BigQuery Writing – Supports streaming and batch inserts for performance and cost control
+<!-- גררי לפה את תמונת הארכיטקטורה הכחולה עם הריבועים הלבנים -->
 
-Query Manipulator – Modify or parameterize SQL dynamically
 
-Real-Time Metrics & Health Checks – Monitor processing rates, errors, and latency
+1.  **Logs Source:** Ingests raw query data files (CSV, JSON, LOG).
+2.  **File Reader:** Parses and streams raw records sequentially.
+3.  **MongoDB Storage:** Stores unstructured raw records for fast staging.
+4.  **Parser Pipeline:** Normalizes staging entities into predefined structural formats (`ParsedQuery`).
+5.  **Traffic Simulator:** Controls precise load timing to replay traffic patterns realistically.
+6.  **Formatter & Runner:** Builds and streams finalized data blocks directly into **Google BigQuery**.
+7.  **Consul Integration:** Manages active system configurations and process checkpoint states.
 
-Configurable Playback – Adjust replay rate, time shift, and jitter for realistic scenarios
+## 📈 Observability & Monitoring
 
-Cloud-Native Deployment – Kubernetes-ready with resource controls and readiness checks
+The system includes built-in metric collection pipelines connected directly to **Datadog** for full end-to-end operational visibility.
 
-Datadog Integration – Send custom application metrics for monitoring and alerting
+<!-- גררי לפה את תמונת הגרפים הלבנה של הדאשבורד -->
 
-Architecture Overview
-Log Source – Reads from local files or object storage
 
-Simulator – Parses events, adjusts timestamps, applies jitter, and controls replay speed
+Metrics monitored include:
+*   Real-time processing latency and query median duration (`loadtool.simulated.realtime.median`).
+*   Pipeline ingest success rates (`loadtool.log.success`).
+*   Total record throughput successfully delivered to target endpoints (`loadtool.records.sent`).
 
-MongoDB – Stores intermediate or enriched data for downstream processing
-
-Consumers – Read and transform data from MongoDB
-
-BigQuery Loader – Writes processed data into BigQuery tables
-
-Observability Layer – Datadog metrics, /healthz and /ready endpoints for monitoring
-
-Data Flow:
-[Logs] → [Simulator] → [MongoDB] → [Consumers] → [BigQuery]
-
-Installation & Deployment
-Prerequisites
-Go 1.22+
-
-GCP project with BigQuery enabled
-
-Service Account JSON with correct BigQuery permissions
-
-Deployment Modes
-Local Execution – For development or small runs
-
-Docker – Portable containerized environment
-
-Kubernetes – Scalable, production-grade deployment with auto-restart and probes
-
-Monitoring & Observability
-Health Endpoints – /healthz and /ready for readiness and liveness checks
-
-Datadog Integration – Environment, service, and version tags for filtering metrics
-
-Performance Tracking – Monitor throughput, error rates, and latency over time
+## 🛠️ Built With
+*   **Language:** Go (Golang)
+*   **Databases:** MongoDB, Google BigQuery
+*   **Infrastructure & DevOps:** Docker, Kubernetes, Consul
+*   **Monitoring:** Datadog
